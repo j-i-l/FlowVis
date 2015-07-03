@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 __title__ = 'flowvis'
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 #__build__ =
 __author__ = 'Jonas I Liechti'
 __license__ = 'Apache 2.0'

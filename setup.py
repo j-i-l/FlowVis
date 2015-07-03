@@ -42,7 +42,7 @@ setup(
     author='Jonas I. Liechti',
     author_email='jon.liechti@gmail.com',
     url='https://github.com/j-i-l/FlowVis',
-    download_url='https://github.com/j-i-l/FlowVis/tarball/0.1.post0',
+    download_url='https://github.com/j-i-l/FlowVis/tarball/0.1.1',
     keywords=['visualization', 'network', 'transport', 'flow'],
     packages=packages,
     package_data={'': ['LICENSE', 'HISTORY']},
