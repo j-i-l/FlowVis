@@ -1,0 +1,6 @@
+//id	x-coord	y-coord	bedarf [dm3/s]	penal.kosten	staerke	beschreibung
+1	0.1	1	-7	0	10	Quelle
+2	1	0	0	0	10	Transit
+3	1	1	0	0	10	Transit
+4	1	2	0	0	10	Transit
+5	2	1	5	100	10	Senke
