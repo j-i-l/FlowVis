@@ -19,7 +19,7 @@ packages = [
     'flowvis',
 ]
 
-requires = ['matplotlib']
+requires = ['matplotlib', ]# 'networkx']
 
 version = ''
 with open('flowvis/__init__.py', 'r') as fd:

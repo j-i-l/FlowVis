@@ -239,7 +239,7 @@ class TVis():
         checkpoints = [n_vis.coords for n_vis in self.nodes_visualisations]
         # enter the optimization procedure
         if optimize_layout:
-            from visualization.flowvis.packages.vecpy import Vector as Vec
+            from packages.vecpy import Vector as Vec
             import networkx as nx
             # for every segment if every edge, track id of start and stop points
             endpoint_ids = []
