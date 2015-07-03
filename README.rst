@@ -1,5 +1,5 @@
-VecPy: Some Linear Algebra Basics in Python
-===========================================
+FlowVis: Visualization Tool for Transport Networks in Python
+============================================================
 
 .. image:: https://img.shields.io/pypi/v/requests.svg
     :target: https://pypi.python.org/pypi/flowvis
