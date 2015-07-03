@@ -17,9 +17,6 @@ if sys.argv[-1] == 'publish':
 
 packages = [
     'flowvis',
-    'flowvis.visualizer',
-    'flowvis.structure',
-    'flowvis.scenario',
 ]
 
 requires = ['matplotlib']
