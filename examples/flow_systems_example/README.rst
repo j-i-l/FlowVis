@@ -5,7 +5,7 @@ You can run the example as is simply by running the code below:
 
 .. code-block:: bash
 
-    python simple_example.py
+    python visualize.py simple_example
 
 This will create a folder 'plots' containing 4 different visualizations.
 

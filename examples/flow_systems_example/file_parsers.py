@@ -69,14 +69,6 @@ def load_edges(edges_file):
 
 
 def load_attack(attack_file):
-    """
-
-    :param attack_file:
-    :return: two list, the first being the list of ids of attacked nodes and the second
-        a list of ids of attacked edges.
-        Note that if edges are defined with a tuple of node id, e.g. (2,1) as the edge from
-        node 2 to node 1, then an edge id of (2,1) will also be valid.
-    """
     attacked_nodes = []
     attacked_edges = []
     elements = [attacked_nodes, attacked_edges]
@@ -101,18 +93,6 @@ def load_attack(attack_file):
 
 
 def load_solution(solution_file):
-    """
-
-    :param solution_file:
-    :return: two lists, the before_config and the after_config list.
-        The structure of both lists is identical, each list contains two dictionaries, the first for the nodes and
-        the second for the edges.
-            The node dict, uses the node id as key and the value is given by by a tuple giving
-            the uncovered demands and the associated costs.
-            The edge dict, uses edge ids (int or tuple) as key and holds as value the flow (units per time) along the
-            given edge.
-
-    """
     before_config = [{}, {}]
     after_config = [{}, {}]
     with open(solution_file, 'r') as f:

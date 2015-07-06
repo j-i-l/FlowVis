@@ -88,7 +88,7 @@ class TVis():
         :return:
         """
         self.nodes = []
-        print nodes_list
+        #print nodes_list
         for a_node in nodes_list:
             self.nodes.append(
                 Node(
