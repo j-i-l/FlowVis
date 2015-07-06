@@ -17,6 +17,7 @@ if sys.argv[-1] == 'publish':
 
 packages = [
     'flowvis',
+    'flowvis.packages'
 ]
 
 requires = ['matplotlib', ]# 'networkx']

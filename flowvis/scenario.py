@@ -48,8 +48,21 @@ class Scenario():
                 nodes=self.load_nodes(self.nodes_file),
                 edges=self.load_edges(self.edges_file),
             )
-        self.attack_file = kwargs.get('attack_file', None)
-        self.solution_file = kwargs.get('solution_file', None)
+        self.attack_file = kwargs.get(
+            'attack_file',
+            os.path.join(
+                self.path,
+                'input',
+                'attack.txt'
+            )
+        )
+        self.solution_file = kwargs.get(
+            'solution_file',
+            os.path.join(
+                self.path,
+                'solution.txt'
+            )
+        )
         # initialize the configurations
         self.before_config = None
         self.after_config = None
@@ -90,6 +103,10 @@ class Scenario():
                     'basic_layout{}'.format(format)
                 )
             )
+        if not os.path.isfile(self.attack_file):
+            visualize_attack = False
+        if not os.path.isfile(self.solution_file):
+            visualize_solution = False
         # load the attack scenario
         if any([visualize_attack, visualize_solution]):
             self.tvis.load_attack(*self.load_attack(self.attack_file))

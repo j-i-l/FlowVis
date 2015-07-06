@@ -7,7 +7,7 @@ You can run the example as is simply by running the code below:
 
     python simple_example.py
 
-This will create a folder `plots` containing 4 different visualizations.
+This will create a folder 'plots' containing 4 different visualizations.
 
 
 config.json

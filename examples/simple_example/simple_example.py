@@ -12,8 +12,6 @@ from flowvis import Scenario
 import json
 
 path = './'
-attack_file = 'input/attack_simple.txt'
-solution_file = 'solution_simple.txt'
 
 # load the configuration file
 with open('config.json', 'r') as f:
@@ -50,7 +48,5 @@ simple_scenario = Scenario(
 
 simple_scenario.visualize(
     'plots',
-    attack_file=attack_file,  # specify the file holding the attack scenario
-    solution_file=solution_file,
     **my_config
 )
