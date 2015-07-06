@@ -92,6 +92,7 @@ class EdgeVis():
         self.node_scale = kwargs.get('node_scale', 1.)
         self.scale = kwargs.get('scale', 0.01)
         self.with_label = kwargs.get('with_label', True)
+        self.visible = kwargs.get('visible', True)
         self.kwargs = kwargs
         self.patch_collection = []
         self.super_patch_collection = []
@@ -239,7 +240,10 @@ class EdgeVis():
         self._update(colors)
         # show the status if the node has a capacity
         self.patch_collection.extend(self.basic_structure)
-        return self.patch_collection, self.labels, self.super_patch_collection
+        if self.visible:
+            return self.patch_collection, self.labels, self.super_patch_collection
+        else:
+            return None
 
     def get_label(self):
         # to do: does not call self._update, so the labels might not be up to date
@@ -319,6 +323,7 @@ class NodeVis():
         self.r *= self.node_scale
         self.label_scale = kwargs.get('label_scale', 1.)
         self.with_label = kwargs.get('with_label', False)
+        self.show_id = kwargs.get('show_id', False)
         self.kwargs = kwargs
         # initialize an empty patch collection
         self.patch_collection = []
@@ -517,8 +522,30 @@ class NodeVis():
 
     def _label(self, colors):
         # return None if it is a transit node or no label should be shown
-        if self.need == 0.0 or not self.with_label:
+        if self.show_id:
+            self.labels = []
+            id_label = str(self._id)
+            coords_id = (
+                self.coords[0],
+                self.coords[1]
+            )
+            self.labels.append(
+                (
+                    id_label,
+                    coords_id,
+                    {
+                        'horizontalalignment': 'center',
+                        'verticalalignment': 'center',
+                        'size': self.r * 300 * self.label_scale,
+                        'color': colors['tc'],
+                        'box': False
+                    }
+                )
+            )
+        else:
             self.labels = None
+        if self.need == 0.0 or not self.with_label:
+            pass
         else:
             its_capacity = '{:g}'.format(abs(self.need))
             cap_pen = its_capacity
@@ -543,7 +570,9 @@ class NodeVis():
                 }
             )
             # show the capacity only in layout mode
-            self.labels = [capacity_label] if self.layout_mode else []
+            if self.layout_mode:
+                self.labels.append(capacity_label)
+            #self.labels = [capacity_label] if self.layout_mode else []
             # add info about coverage of the need if it is not a transit node and we are not in layout mode
             if self.need != 0 and not self.layout_mode:
                 in_percent = int(abs(self.coverage) / float(abs(self.need)) * 100)

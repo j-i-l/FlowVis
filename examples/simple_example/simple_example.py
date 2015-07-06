@@ -61,4 +61,6 @@ simple_scenario.visualize(
     node_label_scale=1,
     show_node_labels=True,
     show_edge_labels=True,
+    show_edges=True,
+    with_node_ids=True
 )

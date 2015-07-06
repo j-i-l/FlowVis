@@ -208,6 +208,8 @@ class TVis():
         if force_layout_show:
             self._debug_mode = True
             import networkx as nx
+        show_edges = kwargs.get('show_edges', True)
+        with_node_ids = kwargs.get('with_node_ids', False)
         limit_dist_scale = kwargs.get('limit_dist_scale', 1)
         limit_dist = limit_dist_scale * 1.5 * self.node_size
         minimal_control = kwargs.get('minimal_control', True)
@@ -220,7 +222,7 @@ class TVis():
                     edge, coords_scaling=self.coords_scaling,
                     scale=self.node_size, width_scale=0.2 * self.node_size,
                     label_scale=edge_label_scale, edge_scale=edge_scale, node_scale=node_scale,
-                    with_label=s_e_l
+                    with_label=s_e_l, visible=show_edges
                 )
             )
         # run through the nodes
@@ -232,7 +234,7 @@ class TVis():
                     node, r=self.node_size,
                     scale=self.node_size, label_scale=node_label_scale, node_scale=node_scale,
                     coords_scaling=self.coords_scaling,
-                    with_label=s_n_l
+                    with_label=s_n_l, show_id=with_node_ids
                 )
             )
         # get a list of all points to avoid
@@ -438,9 +440,10 @@ class TVis():
         for edgevis in self.edges_visualisations:
             # draw the edges and label them
             visual_els = edgevis.get_visual_elements(self.colors)
-            patches.extend(visual_els[0])
-            labels.append(visual_els[1])
-            super_patches.extend(visual_els[2])
+            if visual_els is not None:
+                patches.extend(visual_els[0])
+                labels.append(visual_els[1])
+                super_patches.extend(visual_els[2])
         # now draw the nodes
         for nodevis in self.nodes_visualisations:
             # a node is an object of the TN class
@@ -453,8 +456,16 @@ class TVis():
             if single_labels is not None:
                 for a_label in single_labels:
                     box_fc = a_label[2].pop('box_fc', self.colors['bc'])
+                    with_box = a_label[2].pop('box', True)
                     bbox_props['fc'] = box_fc
+                    if not with_box:
+                        bbox_props['fc'] = 'none'
+                        bbox_props['ec'] = 'none'
+                    else:
+                        bbox_props['fc'] = self.colors['bc']
+                        bbox_props['ec'] = self.colors['tc']
                     self.ax_1.annotate(*a_label[:2], bbox=bbox_props, **a_label[2])
+
         # rotate the red bars
         self.collection = PatchCollection(patches, match_original=True)
         # to do: adjust the size of the annotation text (eg. one size from 0-10, 10-100, 100-1000 nodes
