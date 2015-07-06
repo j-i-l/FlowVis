@@ -1,4 +1,0 @@
-Table 1  : attacked nodes (one number per line)
-2
- 
-Table 2  : attacked edges (specifying id start node and id end node, two numbers per line, TAB as separator)
