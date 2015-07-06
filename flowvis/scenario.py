@@ -1,6 +1,7 @@
 __author__ = 'Jonas I Liechti'
 from visualizer import TVis
 import os
+import errno
 
 
 class Scenario():
@@ -71,6 +72,12 @@ class Scenario():
         :param kwargs: optional arguments passed to the visualization procedure.
         :return:
         """
+        # make sure the output directory exists, if not create it
+        try:
+            os.makedirs(output_dir)
+        except OSError as exception:
+            if exception.errno != errno.EEXIST:
+                raise
         if solution_file:
             self.solution_file = solution_file
         if attack_file:
