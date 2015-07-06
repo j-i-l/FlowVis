@@ -457,12 +457,11 @@ class TVis():
                 for a_label in single_labels:
                     box_fc = a_label[2].pop('box_fc', self.colors['bc'])
                     with_box = a_label[2].pop('box', True)
-                    bbox_props['fc'] = box_fc
                     if not with_box:
                         bbox_props['fc'] = 'none'
                         bbox_props['ec'] = 'none'
                     else:
-                        bbox_props['fc'] = self.colors['bc']
+                        bbox_props['fc'] = box_fc
                         bbox_props['ec'] = self.colors['tc']
                     self.ax_1.annotate(*a_label[:2], bbox=bbox_props, **a_label[2])
 
