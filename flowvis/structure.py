@@ -93,6 +93,7 @@ class EdgeVis():
         self.scale = kwargs.get('scale', 0.01)
         self.with_label = kwargs.get('with_label', True)
         self.visible = kwargs.get('visible', True)
+        self.label_position = kwargs.get('label_position', 0.5)
         self.kwargs = kwargs
         self.patch_collection = []
         self.super_patch_collection = []
@@ -189,8 +190,8 @@ class EdgeVis():
         start_vec = Vec(s_coords)
         # maybe always use the last part...
         if len(self.segments) == 1:  # single segment: place it half way
-            half_way_vec = start_vec + 0.5 * edge_vec
-            coords_label = half_way_vec.coords[:2]
+            part_way_vec = start_vec + self.label_position * edge_vec
+            coords_label = part_way_vec.coords[:2]
         else:  # several segments: place label at the end of the first
             #half_way_vec = start_vec + 0.5 * edge_vec
             #coords_label = half_way_vec.coords[:2]
@@ -600,7 +601,6 @@ class NodeVis():
                 )
             #ax.annotate('axes center', xy=(.5, .5),  xycoords='axes fraction',
             #        horizontalalignment='right', verticalalignment='bottom')
-
     def get_visual_elements(self, colors):
         """
         Simply returns the patch collection of the node

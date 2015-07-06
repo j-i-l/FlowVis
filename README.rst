@@ -29,5 +29,5 @@ Documentation
 
 FlowVis is a python package allowing to visualize transport flow in network like infrastructure.
 
-For an exemplary use, refer to the [FlowVisExample](https://github.com/j-i-l/FlowVisExample).
+For an exemplary use, refer to the [FlowVisExample](https://github.com/j-i-l/FlowVisExample ).
 

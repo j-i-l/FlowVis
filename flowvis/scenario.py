@@ -1,5 +1,6 @@
 __author__ = 'Jonas I Liechti'
 from visualizer import TVis
+from matplotlib.colors import cnames
 import os
 import errno
 
@@ -36,8 +37,11 @@ class Scenario():
                 'edges.txt'
             )
         )
+        # initialize the color mapper
+        self.color_mapper = {name: hex_code for name, hex_code in cnames.iteritems()}
         colors = kwargs.get('colors', None)
         if colors:
+            colors = {colors[k]: self.color_mapper.get(k, colors[k]) for k in colors}
             self.tvis = TVis(
                 nodes=self.load_nodes(self.nodes_file),
                 edges=self.load_edges(self.edges_file),

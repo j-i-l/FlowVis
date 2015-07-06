@@ -88,7 +88,7 @@ class TVis():
         :return:
         """
         self.nodes = []
-        #print nodes_list
+        print nodes_list
         for a_node in nodes_list:
             self.nodes.append(
                 Node(
@@ -132,6 +132,7 @@ class TVis():
         :return:
         """
         unf_nodes = [self.get_node(an_id) for an_id in attacked_nodes]
+        print unf_nodes
         #filter(lambda x: x._id in attacked_nodes, self.nodes)
         unf_edges = [self.get_edge(an_id) for an_id in attacked_edges]
         #unf_edges = []
@@ -213,6 +214,7 @@ class TVis():
         limit_dist_scale = kwargs.get('limit_dist_scale', 1)
         limit_dist = limit_dist_scale * 1.5 * self.node_size
         minimal_control = kwargs.get('minimal_control', True)
+        label_position = kwargs.get('edge_label_position', 0.5)
         self._scaling()
         # run through the edges
         self.edges_visualisations = []
@@ -222,7 +224,7 @@ class TVis():
                     edge, coords_scaling=self.coords_scaling,
                     scale=self.node_size, width_scale=0.2 * self.node_size,
                     label_scale=edge_label_scale, edge_scale=edge_scale, node_scale=node_scale,
-                    with_label=s_e_l, visible=show_edges
+                    with_label=s_e_l, visible=show_edges, label_position=label_position
                 )
             )
         # run through the nodes
