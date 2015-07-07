@@ -1,5 +1,5 @@
 __title__ = 'flowvis'
-__version__ = '0.1.3'
+__version__ = '0.1.4'
 #__build__ =
 __author__ = 'Jonas I Liechti'
 __license__ = 'Apache 2.0'
