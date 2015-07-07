@@ -6,23 +6,6 @@ from matplotlib.patches import Circle, FancyBboxPatch, FancyArrow
 from matplotlib.transforms import Affine2D
 from packages.vecpy import Vector as Vec
 
-# gives the color of edges, borders etc
-layoutcolor = '0.2'
-# give the color for the edges
-edge_layoutcolor = '0.25'
-# the color of user nodes
-usercolor = 'blue'
-# the color of producer nodes
-producercolor = 'yellow'
-# what color should indicate excess of goods
-excesscolor = 'orange'
-# color indication non-covering of needs
-alertcolor = 'red'
-# color for warning labels
-warningcolor = 'orange'
-# the color of the background
-_backgroundcolor = 'white'
-
 
 class Edge():
     def __init__(
@@ -218,7 +201,7 @@ class EdgeVis():
             cross_bar = FancyBboxPatch(
                 (0, 0), self.scale * self.label_scale, 0.07 * self.scale * self.label_scale,
                 boxstyle="square,pad={}".format(0.05 * self.scale * self.label_scale),
-                color=alertcolor, alpha=min(1, 2 * self.alpha), zorder=6
+                color=colors['ac'], alpha=min(1, 2 * self.alpha), zorder=6
             )
             rotator = Affine2D().rotate_deg(-45)
             corner_coords = (

@@ -41,7 +41,7 @@ class Scenario():
         self.color_mapper = {name: hex_code for name, hex_code in cnames.iteritems()}
         colors = kwargs.get('colors', None)
         if colors:
-            colors = {colors[k]: self.color_mapper.get(k, colors[k]) for k in colors}
+            colors = {k: self.color_mapper.get(k, colors[k]) for k in colors}
             self.tvis = TVis(
                 nodes=self.load_nodes(self.nodes_file),
                 edges=self.load_edges(self.edges_file),
