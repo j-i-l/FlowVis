@@ -1,10 +1,10 @@
 FlowVis: Visualization Tool for Transport Networks in Python
 ============================================================
 
-.. image:: https://img.shields.io/pypi/v/requests.svg
+.. image:: https://img.shields.io/pypi/v/flowvis.svg
     :target: https://pypi.python.org/pypi/flowvis
 
-.. image:: https://img.shields.io/pypi/dm/requests.svg
+.. image:: https://img.shields.io/pypi/dm/flowvis.svg
         :target: https://pypi.python.org/pypi/flowvis
 
 
